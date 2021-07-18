@@ -7,9 +7,10 @@ enum TextType {
   headLine4,
   headLine5,
   headLine6,
+  subtitle1,
+  subtitle2,
   body1,
   body2,
-  body3,
 }
 
 extension TypeToStyle on TextType {
@@ -18,31 +19,34 @@ extension TypeToStyle on TextType {
     TextStyle _style;
     switch (this) {
       case TextType.headLine1:
-        _style = textTheme.headline1!.copyWith(fontSize: 96);
+        _style = textTheme.headline1!;
         break;
       case TextType.headLine2:
-        _style = textTheme.headline2!.copyWith(fontSize: 60);
+        _style = textTheme.headline2!;
         break;
       case TextType.headLine3:
-        _style = textTheme.headline3!.copyWith(fontSize: 48);
+        _style = textTheme.headline3!;
         break;
       case TextType.headLine4:
-        _style = textTheme.headline4!.copyWith(fontSize: 34);
+        _style = textTheme.headline4!;
         break;
       case TextType.headLine5:
-        _style = textTheme.headline5!.copyWith(fontSize: 24);
+        _style = textTheme.headline5!;
         break;
       case TextType.headLine6:
-        _style = textTheme.headline6!.copyWith(fontSize: 20);
+        _style = textTheme.headline6!;
         break;
       case TextType.body1:
-        _style = textTheme.bodyText1!.copyWith(fontSize: 16);
+        _style = textTheme.bodyText1!;
         break;
       case TextType.body2:
-        _style = textTheme.bodyText2!.copyWith(fontSize: 14);
+        _style = textTheme.bodyText2!;
         break;
-      case TextType.body3:
-        _style = textTheme.bodyText2!..copyWith(fontSize: 10);
+      case TextType.subtitle1:
+        _style = textTheme.subtitle1!;
+        break;
+      case TextType.subtitle2:
+        _style = textTheme.subtitle2!;
         break;
     }
     return _style;
