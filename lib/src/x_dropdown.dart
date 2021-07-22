@@ -1,5 +1,6 @@
-import 'package:essential_ui_kit/widgets/x_text.dart';
 import 'package:flutter/material.dart';
+
+import '../essential_ui_kit.dart';
 
 XText _optionText(String option) => XText(
       option,

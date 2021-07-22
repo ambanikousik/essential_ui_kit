@@ -1,7 +1,7 @@
 library essential_ui_kit;
 
-export 'widgets/x_dropdown.dart';
-export 'widgets/x_text.dart';
-export 'widgets/x_switch.dart';
-export 'widgets/x_button.dart';
-export 'widgets/x_dialogue.dart';
+export 'src/x_dropdown.dart';
+export 'src/x_text.dart';
+export 'src/x_switch.dart';
+export 'src/x_button.dart';
+export 'src/x_dialogue.dart';
