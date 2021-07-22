@@ -4,3 +4,4 @@ export 'widgets/x_dropdown.dart';
 export 'widgets/x_text.dart';
 export 'widgets/x_switch.dart';
 export 'widgets/x_button.dart';
+export 'widgets/x_dialogue.dart';
