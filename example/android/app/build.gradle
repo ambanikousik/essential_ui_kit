@@ -28,6 +28,7 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 android {
     compileSdkVersion 30
 
+<<<<<<< HEAD
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -37,6 +38,8 @@ android {
         jvmTarget = '1.8'
     }
 
+=======
+>>>>>>> fda4699b0679114db9b90bffd31e27b97b5a921c
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
