@@ -3,31 +3,47 @@ import 'package:flutter/material.dart';
 import 'x_button.dart';
 import 'x_text.dart';
 
-XText _title(String title)=> XText(
-            title,
-            textType: TextType.headLine6,
-            padding: const EdgeInsets.all(10),
-            color: Colors.white,
-          );
+XText _title(String title) => XText(
+      title,
+      textType: TextType.headLine6,
+      padding: const EdgeInsets.all(10),
+      color: Colors.white,
+    );
 
-// Widget _body()=>           
+// Widget _body()=>
 
 class XDialogue extends StatelessWidget {
   final String? title;
   final String? details;
   final String buttonText;
   final XButton? button;
+  final Icon? icon;
   final VoidCallback? onTap;
   final Color bgColor;
   final Color titleBarColor;
   final Widget? customBody;
 
-
-  factory XDialogue.error(String error){
-    return  XDialogue(
+  factory XDialogue.error(String error) {
+    return XDialogue(
       title: "Error!",
       details: error,
+      icon: const Icon(
+        Icons.error,
+      ),
       titleBarColor: Colors.redAccent,
+      bgColor: Colors.white,
+    );
+  }
+
+  factory XDialogue.warning(String warningError) {
+    return XDialogue(
+      title: "Warning!",
+      icon: const Icon(
+        Icons.warning,
+        color: Colors.white,
+      ),
+      details: warningError,
+      titleBarColor: Colors.orange.withOpacity(0.7),
       bgColor: Colors.white,
     );
   }
@@ -37,11 +53,14 @@ class XDialogue extends StatelessWidget {
       {Key? key,
       @required this.title,
       @required this.details,
+      this.icon,
       this.buttonText = 'Close',
-      this.onTap, 
+      this.onTap,
       this.bgColor = const Color(0xffF3F2C9),
-       this.titleXText = _title, 
-       this.titleBarColor = const Color(0xff055052), this.customBody, this.button})
+      this.titleXText = _title,
+      this.titleBarColor = const Color(0xff055052),
+      this.customBody,
+      this.button})
       : super(key: key);
 
   @override
@@ -54,21 +73,30 @@ class XDialogue extends StatelessWidget {
           children: [
             Container(
               width: double.infinity,
-          color:titleBarColor,
-          child: titleXText(title??"title"),
-        ),
-     customBody??   _DialogueBody(   details ?? "details", titleBarColor),
-         button??   XButton(
-              width: 100,
-                color: titleBarColor,
-                textColor: Colors.white,
-                textType: TextType.body1,
-                padding: EdgeInsets.zero,
-                text: buttonText,
-                onPressed: onTap ??
-                    () {
-                      Navigator.pop(context);
-                    })
+              color: titleBarColor,
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: icon ?? Container(),
+                  ),
+                  titleXText(title ?? "title"),
+                ],
+              ),
+            ),
+            customBody ?? _DialogueBody(details ?? "details", titleBarColor),
+            button ??
+                XButton(
+                    width: 100,
+                    color: titleBarColor,
+                    textColor: Colors.white,
+                    textType: TextType.body1,
+                    padding: EdgeInsets.zero,
+                    text: buttonText,
+                    onPressed: onTap ??
+                        () {
+                          Navigator.pop(context);
+                        })
           ],
         ),
       ),
@@ -76,22 +104,24 @@ class XDialogue extends StatelessWidget {
   }
 }
 
-
 class _DialogueBody extends StatelessWidget {
   final String details;
   final Color textColor;
-  const _DialogueBody( this.details,this.textColor,{Key? key,}) : super(key: key);
-
+  const _DialogueBody(
+    this.details,
+    this.textColor, {
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-              constraints: const BoxConstraints(minWidth: 250, maxWidth: 400),
-              child: XText(
-                details ,
-                padding: const EdgeInsets.all(20),
-                color: textColor,
-              ),
-            );
+    return Container(
+      constraints: const BoxConstraints(minWidth: 250, maxWidth: 400),
+      child: XText(
+        details,
+        padding: const EdgeInsets.all(20),
+        color: textColor,
+      ),
+    );
   }
 }
